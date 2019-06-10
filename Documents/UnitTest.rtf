@@ -1,0 +1,461 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red31\green31\blue36;\red150\green134\blue245;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c100000\c100000\c100000;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c58752\c52717\c95948;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Kostin Galusha\
+\
+SIA Unit Test\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 1		(91 01)\
+halt				(00 00)\
+addimmediate r1 2		(91 02)\
+\
+R1 == 1\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 15		(91 0F)\
+addimmediate r2 31		(92 1F)\
+addimmediate r3 -127	(93 80)\
+addimmediate r4 15		(94 0F)\
+addimmediate r5 31		(95 1F)\
+addimmediate r6 -127	(96 80)\
+addimmediate r7 15		(97 0F)\
+addimmediate r8 31		(98 1F)\
+addimmediate r9 -127	(99 80)\
+addimmediate r10 15	(9A 0F)\
+addimmediate r11 31	(9B 1F)\
+addimmediate r12 -127	(9C 80)\
+addimmediate r13 15	(9D 0F)\
+addimmediate r14 31	(9E 1F)\
+addimmediate r15 -127	(9F 80)\
+interrupt 0			(80 00)\
+\
+R1 == 15\
+R2 == 31 \
+R3 == -127\
+Etc.\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 15		(91 0F)\
+addimmediate r2 31		(92 1F)\
+subtract r2 r1 r3		(52 13)\
+interrupt 0			(80 00)\
+\
+R1 == 15\
+R2 == 31\
+R3 == 16\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 15		(91 0F)\
+store r1 r2 0 			(F1 20)\
+interrupt 0			(80 00) \
+\
+R1 == 15\
+R2 == 15\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 112	(91 70)\
+load r2 r1 0			(E2 10)\
+interrupt 0			(80 00)\
+\
+R1 == 112\
+R2 == 112\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 16		(91 10)\
+addimmediate r2 31		(92 1F)\
+multiply r1 r2 r3		(41 23) \
+interrupt 0			(80 00)\
+\
+R1 == 16\
+R2 == 31\
+R3 == 496\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 100	(91 64)\
+addimmediate r2 127	(92  7F)\
+multiply r1 r2 r3		(41 23) \
+interrupt 0			(80 00)\
+\
+R1 == 100\
+R2 == 127\
+R3 == 12700\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 100	(91 64)\
+addimmediate r2 -127	(92  81)\
+multiply r1 r2 r3		(41 23) \
+interrupt 0			(80 00)\
+\
+R1 == 100\
+R2 == -127\
+R3 == -12700\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 -127	(91 81)\
+addimmediate r2 -127	(92  81)\
+multiply r1 r2 r3		(41 23) \
+interrupt 0			(80 00)\
+\
+R1 == -127\
+R2 == -127\
+R3 == 16129\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 15		(91 0F)\
+addimmediate r2 30		(92 1E)\
+divide r2 r1 r3		(32 13)\
+interrupt 0			(80 00)\
+\
+R1 == 15\
+R2 == 30\
+R3 = 2\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 64		(91 40)\
+addimmediate r2 30		(92 1E)\
+divide r1 r2 r3		(31 23)\
+interrupt 0			(80 00)\
+\
+R1 == 64\
+R2 == 30\
+R3 = 2\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 -127	(91 81)\
+addimmediate r2 -127	(92 81)\
+divide r2 r1 r3		(32 13)\
+interrupt 0			(80 00)\
+\
+R1 == -127\
+R2 == -127\
+R3 = 1\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 -127	(91 81)\
+addimmediate r2 127	(92 7F)\
+divide r2 r1 r3		(32 13)\
+interrupt 0			(80 00)\
+\
+R1 == -127\
+R2 == 127\
+R3 = 1\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 31		(91 1F)\
+leftshift r1 4			(71 04)\
+interrupt 0			(80 00)\
+\
+R1 == 496\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 32		(91 20)\
+rightshift r1 5			(71 25)\
+interrupt 0			(80 00)\
+\
+R1 == 1\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 25 	(91 19)\
+addimmediate r2 30		(92 1E)\
+subtract r2 r1 r3		(52 13)\
+\
+R1 == 25\
+R2 == 30\
+R3 == 5\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 25 	(91 19)\
+addimmediate r2 30		(92 1E)\
+branchifless r2 r1  10	(B2 10 00 0A)\
+subtract r1 r2 r3		(51 23)\
+jump 16			(C0 00 00 10)\
+subtract r2 r1 r3		(52 13)\
+interrupt 0			(80 00)\
+\
+R1 == 25\
+R2 == 30\
+R3 == -5\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 25 	(91 19)\
+addimmediate r2 30		(92 1E)\
+branchifless r1 r2  10	(B1 20 00 0A)\
+subtract r1 r2 r3		(51 23)\
+jump 16			(C0 00 00 10)\
+subtract r2 r1 r3		(52 13)\
+interrupt 0			(80 00)\
+\
+R1 == 25\
+R2 == 30\
+R3 == 5\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 30 	(91 1E)\
+addimmediate r2 30		(92 1E)\
+branchifequal r2 r1  10	(A2 10 00 0A)\
+subtract r1 r2 r3		(51 23)\
+jump 16			(C0 00 00 10)\
+subtract r2 r1 r3		(52 13)\
+interrupt 0			(80 00)\
+\
+R1 == 30\
+R2 == 30\
+R3 == 0\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 30 	(91 1E)\
+addimmediate r2 25		(92 19)\
+branchifequal r2 r1  8	(A2 10 00 0A)\
+subtract r1 r2 r3		(51 23)\
+jump 16			(C0 00 00 10)\
+subtract r2 r1 r3		(52 13)\
+interrupt 0			(80 00)\
+\
+R1 == 30\
+R2 == 25\
+R3 == 5\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 25 	(91 19)\
+addimmediate r2 30		(92 1E)\
+add r1 r2 r3			(11 23)\
+subtract r3 r2 r5		(53 25)\
+branchifequal r5 r1 8	(A5 10 00 08)\
+interrupt 0			(80 00)\
+halt				(00 00)\
+divide r1 r5 r4		(31 54)\
+interrupt 0			(80 00)\
+\
+R1 ==  25\
+R2 == 30\
+R3 == 55\
+R4 == 1\
+R5 == 25\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 15		(91 0F)\
+addimmediate r2 48		(92 30)\
+or r1 r2 r3			(61 23)\
+and r1 r2 r4			(21 24)\
+interrupt 0			(80 00)\
+\
+R1 == 15\
+R2 == 48\
+R3 == 63\
+R4 == 0\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 0		(91 00)\
+addimmediate r2 48		(92 30)\
+or r1 r2 r3			(61 23)\
+and r1 r2 r4			(21 24)\
+interrupt 0			(80 00)\
+\
+R1 == 0\
+R2 == 48\
+R3 == 48\
+R4 == 0\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 10		(91 0A)\
+addimmediate r2 1		(92 01)\
+subtract r1 r2 r1		(51 21)\
+branchifless r1 r2 -2 	(B1 2F FF FE)		\
+halt				(00 00)\
+\
+R1 == 0\
+R2 == 0\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 10		(91 0A)\
+branchifequal r1 r2 4 	(A1 20 00 06)\
+addimmediate r2 1		(92 01)		\
+halt				(00 00)\
+\
+R1 == 10\
+R2 == 10\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 10		(91 0A)\
+addimmediate r2 50		(92 32)\
+store r1 r2 0			(F1 20)\
+subtract r1 r1 r1		(51 11)\
+subtract r2 r2 r2		(52 22)\
+\
+addimmediate r1 20		(91 14)\
+store r1 r2 4			(F1 24)\
+subtract r1 r1 r1		(51 11)\
+subtract r2 r2 r2		(52 22)\
+\
+addimmediate r1 32		(91 20)\
+addimmediate r2 8		(91 08)\
+store r1 r2 0			(F1 20)\
+subtract r1 r1 r1		(51 11)\
+subtract r2 r2 r2		(52 22)\
+\
+addimmediate r1 50		(91 32)\
+load r2 r1 0			(E2 10)\
+add r2 r3 r3			(12 33)\
+iterateover r1 4 4		(D1 04 00 04)\
+interrupt 0			(80 00)\
+			\
+R1 == 32\
+R2 == 32\
+R3 == 62\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 15		(91 0F)\
+addimmediate r2 15		(92 0F)\
+addimmediate r3 16		(93 10)\
+leftshift r1 4 			(71 04)\
+multiply r2 r3 r4		(42 34)\
+branchifequal r1 r4 4	(A1 40 00 04) \
+interrupt 0			(80 00)\
+divide r1 r4 r5		(31 45)\
+interrupt 0			(80 00)\
+\
+R1 == 240 \
+R2 == 15\
+R3 == 16\
+R4 == 240\
+R5 == 1\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 112	(91 70)\
+addimediate r2 7		(92 07)\
+rightshift r1 4 		(71 24)\
+divide r1 r2 r3 		(31 23)\
+interrupt 0			(80 00)\
+\
+R1 == 7\
+R2 == 7\
+R3 == 1\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 112	(91 70)\
+addimediate r2 15		(91 0F)\
+addimmediate r3 127	(93 7F)\
+or r1 r2 r4 			(61 23)\
+divide r4 r3 r5		(34 35)\
+interrupt 0			(80 00)\
+\
+R1 == 112\
+R2 == 15\
+R3 == 127\
+R4 == 127\
+R5 == 1\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+addimmediate r1 112	(91 70)\
+addimediate r2 16		(92 10)\
+addimmediate r3 16 	(93 10)\
+and r1 r2 r4 			(21 24)\
+divide r4 r3 r5		(34 35)\
+interrupt 0			(80 00)\
+\
+R1 == 112\
+R2 == 16\
+R3 == 16\
+R4 == 16\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+jump 6			(C0 00 00 06)		\
+addimmediate r1 112	(91 70)\
+addimmediate r2 16		(92 10)\
+interrupt 0			(80 00)\
+\
+R1 == 0\
+R2 == 16\
+\
+\
+\
+\
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f1 \cf2 \cb3 addimmediate r1 \cf4 10
+\f0 \cf0 \
+
+\f1 \cf2 addimmediate r2 \cf4 100
+\f0 \cf0 \
+
+\f1 \cf2 store r1 r2 \cf4 0
+\f0 \cf0 \
+
+\f1 \cf2 subtract r1 r1 r1
+\f0 \cf0 \
+
+\f1 \cf2 addimmediate r1 \cf4 108
+\f0 \cf0 \
+
+\f1 \cf2 store r1 r2 \cf4 4
+\f0 \cf0 \
+
+\f1 \cf2 subtract r1 r1 r1
+\f0 \cf0 \
+
+\f1 \cf2 addimmediate r1 \cf4 32
+\f0 \cf0 \
+
+\f1 \cf2 addimmediate r2 \cf4 8
+\f0 \cf0 \
+
+\f1 \cf2 store r1 r2 \cf4 0
+\f0 \cf0 \
+
+\f1 \cf2 subtract r1 r1 r1
+\f0 \cf0 \
+
+\f1 \cf2 addimmediate r1 \cf4 100
+\f0 \cf0 \
+
+\f1 \cf2 load r2 r1 \cf4 0
+\f0 \cf0 \
+
+\f1 \cf2 add r2 r3 r3
+\f0 \cf0 \
+
+\f1 \cf2 interrupt \cf4 0
+\f0 \cf0 \
+
+\f1 \cf2 iterateover r1 \cf4 4\cf2  \cf4 6
+\f0 \cf0 \
+
+\f1 \cf2 interrupt \cf4 0
+\f0 \cf0 \
+
+\f1 \cf2 halt}
